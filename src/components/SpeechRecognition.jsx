@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import languages from "../assets/Languages";
 import { BiMicrophone, BiSolidTrashAlt, BiDownload } from "react-icons/bi";
 import SoundWave from "../assets/bars.svg";
@@ -7,6 +7,26 @@ export const SpeechRecognition = () => {
   const [language, setLanguage] = useState("en");
   const [listening, setListening] = useState(false);
   const [result, setResult] = useState("");
+
+  // Speech Recognition
+  let recognition;
+  if ("webkitSpeechRecognition" in window) {
+    recognition = new webkitSpeechRecognition();
+    recognition.continuous = true;
+    recognition.lang = language;
+  }
+
+  useEffect(() => {
+    if (!recognition) return;
+
+    recognition.onresult = (SpeechRecognitionEvent) => {
+      const { results } = SpeechRecognitionEvent;
+      const transcript = results[results.length - 1][0].transcript;
+      setResult(transcript);
+      setListening(false);
+      recognition.stop();
+    };
+  }, [recognition]);
 
   return (
     <div className='w-5/6 h-fit p-4 mt-4 bg-neutral-200 flex flex-col items-center rounded-lg gap-3'>
@@ -33,6 +53,7 @@ export const SpeechRecognition = () => {
         <button
           onClick={() => {
             setListening(false);
+            recognition.stop();
           }}
           className='bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2'
         >
@@ -44,7 +65,9 @@ export const SpeechRecognition = () => {
       {!listening && (
         <button
           onClick={() => {
+            setResult("");
             setListening(true);
+            recognition.start();
           }}
           className='bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2'
         >
@@ -67,7 +90,18 @@ export const SpeechRecognition = () => {
           <BiSolidTrashAlt />
           Clear
         </button>
-        <button className='bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 text-sm'>
+        <button
+          onClick={() => {
+            const element = document.createElement("a");
+            const file = new Blob([result], { type: "text/plain" });
+            element.href = URL.createObjectURL(file);
+            element.download = "speech.txt";
+            document.body.appendChild(element); // Required for Firefox
+            element.click();
+            document.body.removeChild(element); // Clean up
+          }}
+          className='bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 text-sm'
+        >
           <BiDownload />
           Download
         </button>
