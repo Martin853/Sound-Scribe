@@ -29,8 +29,8 @@ export const SpeechRecognition = () => {
   }, [recognition]);
 
   return (
-    <div className='w-5/6 h-fit p-4 mt-4 bg-neutral-200 flex flex-col items-center rounded-lg gap-3'>
-      <h1 className='text-lg font-semibold'>Speech Recognition</h1>
+    <div className='w-5/6 h-fit p-4 mt-16 bg-neutral-200 flex flex-col items-center rounded-lg gap-3'>
+      <h1 className='text-lg sm:text-xl font-semibold'>Speech Recognition</h1>
       <select
         className='w-full p-1 rounded-md'
         value={language}
@@ -47,7 +47,7 @@ export const SpeechRecognition = () => {
           );
         })}
       </select>
-      <hr className=' bg-neutral-300  w-full' style={{ height: "2px" }} />
+      <hr className=' bg-neutral-300 w-full' style={{ height: "2px" }} />
 
       {listening && (
         <button
@@ -55,7 +55,7 @@ export const SpeechRecognition = () => {
             setListening(false);
             recognition.stop();
           }}
-          className='bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2'
+          className='bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 sm:text-lg  '
         >
           <img src={SoundWave} className='w-6' />
           Listening...
@@ -69,14 +69,14 @@ export const SpeechRecognition = () => {
             setListening(true);
             recognition.start();
           }}
-          className='bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2'
+          className='bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 sm:text-lg'
         >
           <BiMicrophone />
           Start Listening
         </button>
       )}
 
-      <h1 className='self-start text-xl'>Result:</h1>
+      <h1 className='self-start text-xl sm:text-2xl'>Result:</h1>
       <div className=' w-full h-36 overflow-y-auto p-4 bg-neutral-100 rounded-lg border-neutral-300 border'>
         {result}
       </div>
@@ -85,7 +85,7 @@ export const SpeechRecognition = () => {
           onClick={() => {
             setResult("");
           }}
-          className='bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 text-sm'
+          className='bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 text-sm sm:text-lg'
         >
           <BiSolidTrashAlt />
           Clear
@@ -100,7 +100,7 @@ export const SpeechRecognition = () => {
             element.click();
             document.body.removeChild(element); // Clean up
           }}
-          className='bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 text-sm'
+          className='bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 text-sm sm:text-lg'
         >
           <BiDownload />
           Download
