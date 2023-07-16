@@ -33,7 +33,7 @@ export const SpeechRecognitionFile = () => {
     fetch("https://api.openai.com/v1/audio/transcriptions", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
+        Authorization: `Bearer ${process.env.VITE_API_KEY}`,
       },
       body: formData,
     })
