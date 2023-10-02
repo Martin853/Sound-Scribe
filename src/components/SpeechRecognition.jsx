@@ -29,10 +29,10 @@ export const SpeechRecognition = () => {
   }, [recognition]);
 
   return (
-    <div className='w-5/6 h-fit p-4 mt-16 bg-neutral-200 flex flex-col items-center rounded-lg gap-3 border-2 border-neutral-300'>
+    <div className='w-2/6 h-fit p-4 mt-16 bg-white flex flex-col items-center rounded-lg gap-3'>
       <h1 className='text-lg sm:text-xl font-semibold'>Speech Recognition</h1>
       <select
-        className='w-full p-1 rounded-md'
+        className='w-full px-2 rounded-md bg-neutral-200'
         value={language}
         onChange={(e) => {
           setLanguage(e.target.value);
@@ -55,7 +55,7 @@ export const SpeechRecognition = () => {
             setListening(false);
             recognition.stop();
           }}
-          className='bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 sm:text-lg  hover:bg-sky-700 transition-all duration-300 ease-in-out '
+          className='bg-purple-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 sm:text-lg  hover:bg-purple-900 transition-all duration-300 ease-in-out '
         >
           <img src={SoundWave} className='w-6' />
           Listening...
@@ -69,7 +69,7 @@ export const SpeechRecognition = () => {
             setListening(true);
             recognition.start();
           }}
-          className='bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 sm:text-lg hover:bg-sky-700 transition-all duration-300 ease-in-out'
+          className='bg-purple-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 sm:text-lg hover:bg-purple-900 transition-all duration-300 ease-in-out'
         >
           <BiMicrophone />
           Start Listening
@@ -85,7 +85,7 @@ export const SpeechRecognition = () => {
           onClick={() => {
             setResult("");
           }}
-          className='bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 text-sm sm:text-lg hover:bg-sky-700 transition-all duration-300 ease-in-out'
+          className='bg-purple-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 text-sm sm:text-lg hover:bg-purple-900 transition-all duration-300 ease-in-out'
         >
           <BiSolidTrashAlt />
           Clear
@@ -103,7 +103,7 @@ export const SpeechRecognition = () => {
           }}
           className={
             result
-              ? "bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 text-sm sm:text-lg  hover:bg-sky-700 transition-all duration-300 ease-in-out"
+              ? "bg-purple-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 text-sm sm:text-lg  hover:bg-purple-900 transition-all duration-300 ease-in-out"
               : "bg-neutral-400 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 sm:text-lg"
           }
         >
