@@ -43,11 +43,11 @@ export const SpeechRecognitionFile = () => {
   };
 
   return (
-    <div className='w-5/6 h-fit p-4 mt-10 bg-neutral-200 flex flex-col items-center rounded-lg gap-3 border-2 border-neutral-300'>
+    <div className='w-2/6 h-fit p-4 mt-10 bg-white flex flex-col items-center rounded-lg gap-3'>
       <h1 className='text-xl sm:text-xl font-semibold'>Speech Recognition</h1>
       <div
         onClick={() => document.querySelector("#file").click()}
-        className='w-full h-fit p-8 flex flex-col gap-3 justify-center items-center bg-neutral-300 rounded-md border-dashed border-2 border-sky-900 hover:cursor-pointer'
+        className='w-full h-fit p-8 flex flex-col gap-3 justify-center items-center bg-neutral-300 rounded-md border-dashed border-2 border-purple-900 hover:cursor-pointer'
       >
         <input
           type='file'
@@ -94,7 +94,7 @@ export const SpeechRecognitionFile = () => {
       <div className='w-full flex gap-3'>
         <button
           onClick={handleUpload}
-          className='bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 text-sm sm:text-lg hover:bg-sky-700 transition-all duration-300 ease-in-out'
+          className='bg-purple-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 text-sm sm:text-lg hover:bg-purple-900 transition-all duration-300 ease-in-out'
         >
           <AiOutlineUpload />
           Upload
@@ -112,8 +112,8 @@ export const SpeechRecognitionFile = () => {
           }}
           className={
             transcript
-              ? "bg-sky-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 text-sm sm:text-lg  hover:bg-sky-700 transition-all duration-300 ease-in-out"
-              : "bg-neutral-400 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 text-sm sm:text-lg"
+            ? "bg-purple-800 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 text-sm sm:text-lg  hover:bg-purple-900 transition-all duration-300 ease-in-out"
+            : "bg-neutral-400 text-white w-full rounded-md p-2 flex justify-center items-center gap-2 text-sm sm:text-lg"
           }
         >
           <BiDownload />
